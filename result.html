@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resultados</title>
+</head>
+<body>
+  <h1>Resultados</h1>
+  <div id="result-container"></div>
+  <button onclick="goBack()">Volver</button>
+  
+  <script>
+    var productData = localStorage.getItem('productData');
+    if (productData) {
+      var resultContainer = document.getElementById('result-container');
+      var resultText = document.createElement('pre');
+      resultText.textContent = productData;
+      resultContainer.appendChild(resultText);
+    } else {
+      console.log('No se encontraron datos de productos en el almacenamiento local.');
+    }
+    
+    function goBack() {
+      window.history.back();
+    }
+  </script>
+</body>
+</html>
