@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Test</title>
+    <meta charset=utf-8>
+</head>
+
+<body>
+    <h1>Result</h1>
+    <button> <a href="/"> Volver al inicio </a> </button>
+    {% if error %}
+        <div>
+            {% if product_data %}
+                <h3> {{product_data['product_name']}}</h3>
+                <img src={{product_data['image_url']}}>
+                <h4> Información del producto: </h4>
+                <p> Alérgenos: </p>
+                <ul>
+                    {% for alergeno in product_data['allergens_hierarchy'] %}
+                        <li> {{alergeno}} </li>
+                    {% endfor %}
+                </ul>
+                <p> Trazas: </p>
+                <ul>
+                    {% for traza in product_data['traces'] %}
+                        <li> {{traza}} </li>
+                    {% endfor %}
+                </ul>
+                <p> Nutriscore: {{product_data['nutriscore_grade']}} </p>
+                <p> Vegetariano: {{product_data['vegetarian']}} </p>
+                <p> Vegano: {{product_data['vegan']}} </p>
+                <p> Gluten: {{product_data['gluten']}} </p>
+            {% endif %}
+        </div>
+    {% else %}
+        <div>
+            <h3> Error: </h3>
+            {{product_data}}
+        </div>
+    {% endif %}
+</body>
